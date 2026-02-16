@@ -1,30 +1,3 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import CrashCourseSection from "@/components/CrashCourseSection";
-import WelcomeSection from "@/components/WelcomeSection";
-import DonationSection from "@/components/DonationSection";
-import GetInvolvedSection from "@/components/GetInvolvedSection";  // ✅ ADD THIS
-import Footer from "@/components/Footer";
-
-const Index = () => {
-  return (
-    <main className="min-h-screen">
-      <Navbar />
-
-      <HeroSection />
-      <WelcomeSection />
-      <DonationSection />
-      <GetInvolvedSection />
-
-      
-    
-
-      <Footer />
-    </main>
-  );
-};
-
-export default Index;
 import { useState } from "react";
 import { Phone, Mail, Send, MapPin } from "lucide-react";
 import { toast } from "sonner";
