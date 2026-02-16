@@ -12,7 +12,6 @@ const Index = () => {
       <Navbar />
 
       <HeroSection />
-      <CrashCourseSection />
       <WelcomeSection />
       <DonationSection />
       <GetInvolvedSection />

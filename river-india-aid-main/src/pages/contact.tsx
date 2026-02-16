@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Phone, Mail, Send, MapPin } from "lucide-react";
 import { toast } from "sonner";
-import Navbar from "@/components/Navbar"; // ✅ ADD NAVBAR
+import Navbar from "@/components/Navbar";
 
-const subjectOptions = ["General Enquiry", "Donation", "Music Class"];
+const subjectOptions = ["General Enquiry", "Donation"];
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -37,64 +37,76 @@ const Contact = () => {
 
   return (
     <>
-      {/* ✅ NAVBAR */}
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section className="bg-primary pt-32 pb-20">
-        <div className="section-container text-center">
+      {/* HERO */}
+      <section className="bg-primary pt-32 pb-20 text-center">
+        <div className="section-container max-w-3xl mx-auto">
           <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-3">
             Get in Touch
           </p>
           <h1 className="text-4xl sm:text-5xl font-display font-bold text-primary-foreground mb-4">
             Contact Us
           </h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-lg text-primary-foreground/80">
             We would love to hear from you. Reach out to us for any inquiries or
             further information about our music program.
           </p>
         </div>
       </section>
 
-      {/* CONTACT INFO + FORM */}
-      <section className="py-16 bg-background">
-        <div className="section-container max-w-5xl">
-          <div className="grid md:grid-cols-5 gap-10">
-            
+      {/* CONTACT SECTION */}
+      <section className="py-20 bg-background">
+        <div className="section-container max-w-6xl mx-auto">
+          <div className="grid gap-14 md:grid-cols-5 items-start">
+
             {/* INFO CARDS */}
-            <div className="md:col-span-2 space-y-6">
-              <div className="bg-card rounded-xl p-6 shadow-md border">
-                <Phone className="w-6 h-6 mb-3 text-primary" />
-                <h3 className="font-bold">Phone</h3>
-                <a href="tel:+919442795190" className="text-muted-foreground">
+            <div className="md:col-span-2 flex flex-col gap-6">
+              <div className="bg-card rounded-xl p-6 border shadow-sm">
+                <Phone className="w-6 h-6 text-primary mb-2" />
+                <h3 className="font-semibold text-lg mb-1">Phone</h3>
+                <a
+                  href="tel:+919442795190"
+                  className="text-muted-foreground hover:text-primary transition"
+                >
                   +91 94427 95190
                 </a>
               </div>
 
-              <div className="bg-card rounded-xl p-6 shadow-md border">
-                <Mail className="w-6 h-6 mb-3 text-primary" />
-                <h3 className="font-bold">Email</h3>
-                <a href="mailto:info@theriverindia.com" className="text-muted-foreground">
+              <div className="bg-card rounded-xl p-6 border shadow-sm">
+                <Mail className="w-6 h-6 text-primary mb-2" />
+                <h3 className="font-semibold text-lg mb-1">Email</h3>
+                <a
+                  href="mailto:info@theriverindia.com"
+                  className="text-muted-foreground hover:text-primary transition"
+                >
                   info@theriverindia.com
                 </a>
               </div>
 
-              <div className="bg-card rounded-xl p-6 shadow-md border">
-                <MapPin className="w-6 h-6 mb-3 text-primary" />
-                <h3 className="font-bold">Location</h3>
+              <div className="bg-card rounded-xl p-6 border shadow-sm">
+                <MapPin className="w-6 h-6 text-primary mb-2" />
+                <h3 className="font-semibold text-lg mb-1">Location</h3>
                 <p className="text-muted-foreground">India</p>
               </div>
             </div>
 
-            {/* FORM */}
-            <div className="md:col-span-3">
-              <div className="bg-card rounded-xl p-8 shadow-md border">
-                <h2 className="text-2xl font-bold mb-6">
-                  Send Us a Message
-                </h2>
+            {/* FORM – IMPROVED UI */}
+            <div className="md:col-span-3 mt-8 md:mt-14">
+              <div className="bg-card/80 backdrop-blur rounded-2xl p-10 border shadow-lg">
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                {/* FORM HEADER */}
+                <div className="mb-8 text-center md:text-left">
+                  <h2 className="text-2xl font-bold mb-2">
+                    Send Us a Message
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Fill out the form and our team will get back to you shortly.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <input
                       name="name"
                       placeholder="Your Name"
@@ -120,14 +132,16 @@ const Contact = () => {
                   >
                     <option value="">Select Subject</option>
                     {subjectOptions.map((opt) => (
-                      <option key={opt}>{opt}</option>
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
                     ))}
                   </select>
 
                   <textarea
                     name="message"
                     rows={5}
-                    placeholder="Your Message"
+                    placeholder="Write your message here..."
                     value={form.message}
                     onChange={handleChange}
                     className="input resize-none"
@@ -135,7 +149,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-lg gold-gradient font-semibold flex justify-center gap-2"
+                    className="w-full py-3 rounded-xl gold-gradient font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
                   >
                     <Send className="w-4 h-4" />
                     Send Message
